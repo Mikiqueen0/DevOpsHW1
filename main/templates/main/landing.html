@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio | Teekamon Queen</title>
+    <!-- Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: rgba(20, 20, 20, 0.6);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #6366f1; /* Electric Indigo */
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        /* --- LIGHTWEIGHT ANIMATED BACKGROUND --- */
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            mask-image: radial-gradient(circle at var(--x, 50%) var(--y, 50%), black, transparent 80%);
+        }
+
+        /* Moving Glow Effect */
+        .glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(99, 102, 241, 0.15), transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- BENTO GRID LAYOUT --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* Specific Bento Sections */
+        .hero { grid-column: span 3; display: flex; align-items: center; gap: 25px; }
+        .socials { grid-column: span 1; display: flex; flex-direction: column; justify-content: space-around; align-items: center; }
+        .about { grid-column: span 2; }
+        .skills { grid-column: span 2; }
+        .experience { grid-column: span 4; }
+
+        /* Content Styling */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 20%;
+            background: linear-gradient(45deg, var(--accent), #a855f7);
+            padding: 3px;
+        }
+
+        .profile-img img { width: 100%; border-radius: 18%; }
+
+        h1 { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; }
+        h2 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 15px; color: var(--accent); }
+        p { color: var(--text-muted); line-height: 1.6; }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            margin: 4px;
+            border: 1px solid var(--border);
+        }
+
+        /* Experience Timeline */
+        .exp-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .exp-row:last-child { border: none; }
+
+        .btn {
+            background: var(--text-main);
+            color: var(--bg);
+            padding: 12px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: var(--accent); color: white; }
+
+        /* Social Icons */
+        .s-icon {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+        .s-icon:hover { color: var(--accent); transform: scale(1.2); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: repeat(2, 1fr); }
+            .hero, .experience { grid-column: span 2; }
+        }
+
+        @media (max-width: 600px) {
+            .container { display: flex; flex-direction: column; }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg"></div>
+    <div class="glow"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="card hero">
+            <div class="profile-img">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Milo" alt="Avatar">
+            </div>
+            <div>
+                <span style="color: var(--accent); font-weight: bold; letter-spacing: 2px;">HI, I'M QUEEN</span>
+                <h1>Building digital <br> experiences.</h1>
+            </div>
+        </section>
+
+        <!-- Socials -->
+        <section class="card socials">
+            <a href="#" class="s-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="s-icon"><i class="fab fa-dribbble"></i></a>
+            <a href="#" class="s-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="s-icon"><i class="fab fa-x-twitter"></i></a>
+        </section>
+
+        <!-- About -->
+        <section class="card about">
+            <h2>The Vibe</h2>
+            <p>I’m a 22-year-old developer focused on aesthetic interfaces and clean logic. I bridge the gap between design and code, making sure everything looks "fire" and works perfectly.</p>
+            <a href="mailto:hello@alex.dev" class="btn">Let's Talk</a>
+        </section>
+
+        <!-- Skills -->
+        <section class="card skills">
+            <h2>Tech Stack</h2>
+            <div class="tags">
+                <span class="tag">React</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">Figma</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Three.js</span>
+            </div>
+        </section>
+
+        <!-- Experience / CV Part -->
+        <section class="card experience">
+            <h2>Experience</h2>
+            <div class="exp-row">
+                <div>
+                    <div style="font-weight: bold;">Senior Product Designer</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">TechFlow Studios</div>
+                </div>
+                <div style="color: var(--accent); font-weight: bold;">Present</div>
+            </div>
+            <div class="exp-row">
+                <div>
+                    <div style="font-weight: bold;">Frontend Developer</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">Nebula Creative</div>
+                </div>
+                <div style="color: var(--text-muted);">2022 - 2023</div>
+            </div>
+            <div class="exp-row">
+                <div>
+                    <div style="font-weight: bold;">UI Intern</div>
+                    <div style="font-size: 0.9rem; color: var(--text-muted);">DesignX</div>
+                </div>
+                <div style="color: var(--text-muted);">2021</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive Mouse Follower Script
+        const grid = document.querySelector('.grid-bg');
+        const glow = document.querySelector('.glow');
+
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            
+            grid.style.setProperty('--x', `${x}%`);
+            grid.style.setProperty('--y', `${y}%`);
+            
+            glow.style.setProperty('--x', `${x}%`);
+            glow.style.setProperty('--y', `${y}%`);
+        });
+    </script>
+</body>
+</html>
