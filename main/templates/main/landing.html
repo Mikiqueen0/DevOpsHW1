@@ -167,6 +167,24 @@
             </div>
         </section>
 
+        <section class="card">
+            <h2>Users on Platform</h2>
+
+            <p style="font-size: 2rem; font-weight: 600; margin-top: 10px;">
+                {{ users|length }}
+            </p>
+
+            {% for user in users %}
+                <div style="font-size: 0.85rem; color: var(--text-muted);">
+                    {{ user.username }} – {{ user.email }}
+                </div>
+            {% empty %}
+                <div style="font-size: 0.85rem; color: var(--text-muted);">
+                    No users found
+                </div>
+            {% endfor %}
+        </section>
+
         <!-- Socials -->
         <section class="card socials">
             <a href="#" class="s-icon"><i class="fab fa-github"></i></a>
