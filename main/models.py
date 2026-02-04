@@ -17,4 +17,4 @@ class PreviousJob(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return f"{self.position} at {self.company_name}"
+        return f"{self.position} at {self.company.name}"

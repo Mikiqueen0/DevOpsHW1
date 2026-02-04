@@ -217,26 +217,23 @@
         <!-- Experience / CV Part -->
         <section class="card experience">
             <h2>Experience</h2>
-            <div class="exp-row">
-                <div>
-                    <div style="font-weight: bold;">Senior Product Designer</div>
-                    <div style="font-size: 0.9rem; color: var(--text-muted);">TechFlow Studios</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                {% for job in jobs %}
+                <div class="exp-row">
+                    <div>
+                        <div style="font-weight: bold;">{{ job.position }}</div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted);">{{ job.company.name }}</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top:8px;">
+                            {{ job.description }}
+                        </p>
+                    </div>
+                    <div style="color: var(--accent); font-weight: bold; text-align: right;">
+                        {{ job.start_date }} - {% if job.end_date %}{{ job.end_date }}{% else %}Present{% endif %}
+                    </div>
                 </div>
-                <div style="color: var(--accent); font-weight: bold;">Present</div>
-            </div>
-            <div class="exp-row">
-                <div>
-                    <div style="font-weight: bold;">Frontend Developer</div>
-                    <div style="font-size: 0.9rem; color: var(--text-muted);">Nebula Creative</div>
-                </div>
-                <div style="color: var(--text-muted);">2022 - 2023</div>
-            </div>
-            <div class="exp-row">
-                <div>
-                    <div style="font-weight: bold;">UI Intern</div>
-                    <div style="font-size: 0.9rem; color: var(--text-muted);">DesignX</div>
-                </div>
-                <div style="color: var(--text-muted);">2021</div>
+                {% empty %}
+                <div style="font-size: 0.9rem; color: var(--text-muted);">No experience listed yet.</div>
+                {% endfor %}
             </div>
         </section>
     </div>
